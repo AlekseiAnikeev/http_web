@@ -74,12 +74,12 @@ public class Server {
                 return;
             }
 
-            Handler handler = handlerMap.get(request.getMethod() + " " + request.getPath());
+            Handler handler = handlerMap.get(request.method() + " " + request.path());
             if (handler == null) {
-                if (!VALID_PATHS.contains(request.getPath())) {
+                if (!VALID_PATHS.contains(request.path())) {
                     makeNotFoundResponse(out);
                 } else {
-                    makeResponseWithContent(out, request.getPath());
+                    makeResponseWithContent(out, request.path());
                 }
             } else {
                 handler.handle(request, out);

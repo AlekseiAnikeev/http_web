@@ -14,13 +14,13 @@ public class Main {
         // добавление handler'ов (обработчиков)
         server.addHandler("GET", "/messages", (request, responseStream) -> {
             String text = "<h1>GET /messages</h1>\n" +
-                    "Headers: " + request.getHeaders();
+                    "Headers: " + request.headers();
             writeAnyData(text, responseStream);
         });
         server.addHandler("POST", "/messages", (request, responseStream) -> {
             final String text = "<h1>POST /messages</h1>\n" +
-                    "Headers: " + request.getHeaders() + "\n" +
-                    "Body: " + request.getBody();
+                    "Headers: " + request.headers() + "\n" +
+                    "Body: " + request.body();
             writeAnyData(text, responseStream);
         });
         server.listen(9999);
